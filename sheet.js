@@ -4,7 +4,7 @@ const { commitReader } = require('./services/commitReader');
 exports.sheetGithubMark = async () => {
 
     base('Day 1').select({
-        maxRecords: 60,
+        maxRecords: 600,
         view: "Day1Updates"
     }).eachPage(async function page(records, fetchNextPage) {
 
@@ -18,9 +18,14 @@ exports.sheetGithubMark = async () => {
             if (githubURL) {
                 
                 let currentDate = new Date();
+                currentDate = currentDate.getDate();
                 let lastUpdateDate = record.get('lastUpdate');
 
-                if (currentDate === lastUpdateDate) {
+                console.log(lastUpdateDate);
+
+                if (currentDate !== lastUpdateDate) {
+
+                    console.log(recordID);
 
                     let githubSplitData = githubURL.split('/');
 
@@ -34,10 +39,7 @@ exports.sheetGithubMark = async () => {
                     if (repoCommitsData) {
     
                         let startingDate = new Date('2021-05-14');
-                        
-    
-                        currentDate = currentDate.getDate()
-                        let updateFeild = {lastUpdate : currentDate};
+                        let updateFeild = {lastUpdate : currentDate.toString()};
     
                         for (let index = 0; index < repoCommitsData.length; index++) {
     
