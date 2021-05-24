@@ -1,12 +1,22 @@
 // * file for starup programs
 const app = require("./api");
-const connectDB = require('./config/db');
+var schedule = require('node-schedule');
+//const connectDB = require('./config/db');
+const { sheetGithubMark } = require('./sheet');
 
 // * other startup Programs
+sheetGithubMark();
+
+
+// * scheduler
+var j = schedule.scheduleJob('10 */1 * * *', function() { 
+    sheetGithubMark();
+});
+
 
 
 // * connecting DB 
-connectDB();
+//connectDB();
 
 
 // * connetcting PORT

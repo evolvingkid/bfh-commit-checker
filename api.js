@@ -25,8 +25,8 @@ const repoRoute = require('./routes/repo');
 
 // * for API Routes
 app.get("/", (req, res) => res.send("BFH API Running"));
-app.use("/api/commit", commitRoute);
-app.use('/api/users', userRoute);
-app.use('/api/repo', repoRoute);
+// app.use("/api/commit", commitRoute);
+// app.use('/api/users', userRoute);
+// app.use('/api/repo', repoRoute);
 
 module.exports = app;

@@ -3,7 +3,8 @@ const axios = require('../config/axiosConfig');
 
 exports.commitReader = async (username , repo) => {
 
-  const url = `repos/${username}/${repo}/commits`
+  const url = `repos/${username}/${repo}/commits`;
+  console.log(url);
   const response = await axios.get(url)
 
   const repoUrlData = response.data;
